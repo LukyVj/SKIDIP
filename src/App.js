@@ -30,7 +30,12 @@ const Board = props => (
     `}
   >
     <h1>@{props.name}</h1>
-    <div>
+    <div
+      className={css`
+        width: 100%;
+        max-width: 500px;
+      `}
+    >
       {/* <p>
         hoursplayed: <b>{props.hoursplayed}</b>
       </p> */}
