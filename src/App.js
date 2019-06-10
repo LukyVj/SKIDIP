@@ -15,25 +15,39 @@ const team = [
 const Board = props => (
   <div
     className={css`
-      height: 100vh;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      p {
+        border-bottom: 1px dashed;
+        flex: 0 1 100%;
+        display: flex;
+        justify-content: space-between;
+      }
     `}
   >
     <h1>@{props.name}</h1>
     <div>
+      {/* <p>
+        hoursplayed: <b>{props.hoursplayed}</b>
+      </p> */}
       <p>
-        wins: <b>{props.wins}</b>
+        <span>wins:</span> <b>{props.wins}</b>
       </p>
       <p>
-        kills: <b>{props.kills}</b>
+        <span>kills:</span> <b>{props.kills}</b>
       </p>
       <p>
-        kd: <b>{props.kd}</b>
+        <span>k/d:</span> <b>{props.kd}</b>
       </p>
       <p>
-        matchesplayed: <b>{props.matchesplayed}</b>
+        <span>matchesplayed:</span> <b>{props.matchesplayed}</b>
       </p>
       <p>
-        winrate: <b>{props.winrate}</b>
+        <span>winrate:</span> <b>{props.winrate}</b>
       </p>
     </div>
   </div>
@@ -61,6 +75,8 @@ class LeaderBoard extends Component {
   }
 
   render() {
+    console.log(this.state.data);
+
     return this.state.data.map(hit => (
       <Board
         key={hit.uid}
@@ -70,6 +86,7 @@ class LeaderBoard extends Component {
         kd={hit.totals.kd}
         matchesplayed={hit.totals.matchesplayed}
         winrate={hit.totals.winrate}
+        hoursplayed={hit.totals.hoursplayed}
       />
     ));
   }
@@ -83,21 +100,9 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    let statApi =
-      "https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=" +
-      team[0].uid +
-      "&platform=ps4";
-    let box = [];
-    fetch(statApi)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ data: [data] });
-      });
-  }
+  componentDidMount() {}
 
   render() {
-    console.log(this.state.data);
     return (
       <div className={cx("App")}>
         <h1>SKIDIP</h1>
@@ -105,7 +110,7 @@ class App extends Component {
           className={cx(
             css`
               display: grid;
-              grid-template-columns: repeat(4, 1fr);
+              grid-template-columns: repeat(2, 1fr);
               grid-gap: 10px;
               grid-auto-rows: minmax(100px, auto);
             `
