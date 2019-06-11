@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { css, cx } from "emotion";
-// import Client from "fortnite";
+import { timeConverter } from "./helper";
 import "./App.css";
 
 // const fortnite = new Client("425c6cf9-c137-4149-977f-377b7bd33f06");
@@ -26,6 +26,10 @@ const Board = props => (
         flex: 0 1 100%;
         display: flex;
         justify-content: space-between;
+      }
+
+      span {
+        text-transform: uppercase;
       }
     `}
   >
@@ -53,6 +57,16 @@ const Board = props => (
       </p>
       <p>
         <span>winrate:</span> <b>{props.winrate}</b>
+      </p>
+
+      <p>
+        <span>last solo</span> <b>{timeConverter(props.lastSolo)}</b>
+      </p>
+      <p>
+        <span>last duo</span> <b>{timeConverter(props.lastDuo)}</b>
+      </p>
+      <p>
+        <span>last squad</span> <b>{timeConverter(props.lastSquad)}</b>
       </p>
     </div>
   </div>
@@ -92,6 +106,9 @@ class LeaderBoard extends Component {
         matchesplayed={hit.totals.matchesplayed}
         winrate={hit.totals.winrate}
         hoursplayed={hit.totals.hoursplayed}
+        lastSolo={hit.stats.lastmodified_solo}
+        lastDuo={hit.stats.lastmodified_duo}
+        lastSquad={hit.stats.lastmodified_squad}
       />
     ));
   }

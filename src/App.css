@@ -1,8 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bungee|Source+Code+Pro&display=swap");
 
+* {
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+}
 body {
-  background: #000;
+  background: #000000;
   color: lime;
+  font-family: "Source Code Pro";
+  font-variant-numeric: slashed-zero tabular-nums;
 }
 
 h1,
