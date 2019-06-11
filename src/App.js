@@ -46,7 +46,11 @@ const Board = props => (
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0, 0, 0, 0.8);
+          background: rgba(0, 0, 0, 0.9);
+          * {
+            color: lime !important;
+            text-shadow: 0 0 5px #000;
+          }
         `}
     `}
   >
@@ -69,15 +73,6 @@ const Board = props => (
           `}
         />{" "}
         @{props.name}
-        {/* {props.isExpanded && (
-          <button
-            onClick={() => {
-              props.parent.setState({ expanded: false });
-            }}
-          >
-            zoom out
-          </button>
-        )} */}
       </h2>
       <p>
         Does best in{" "}
@@ -110,6 +105,8 @@ const Board = props => (
       <p>
         <span>last squad</span> <b>{timeConverter(props.lastSquad)}</b>
       </p>
+
+      {props.isExpanded && console.log(props.stats)}
     </div>
   </div>
 );
@@ -149,7 +146,6 @@ class LeaderBoard extends Component {
               top: 0;
               right: 0;
               margin: 1em;
-
               z-index: 99;
             `
           }
@@ -181,6 +177,7 @@ class LeaderBoard extends Component {
           topOneSquad={hit.stats.placetop1_squad}
           isExpanded={this.state.expanded}
           parent={this.state}
+          stats={hit.stats}
         />
       </div>
     ));
@@ -207,7 +204,6 @@ class App extends Component {
               grid-template-columns: repeat(1, 1fr);
               grid-gap: 0px;
               grid-auto-rows: minmax(100px, auto);
-              border-collapse: collapse;
 
               @media (min-width: 960px) {
                 grid-template-columns: repeat(2, 1fr);
@@ -218,6 +214,23 @@ class App extends Component {
             `
           )}
         >
+          <div
+            className={css`
+              @media (min-width: 960px) {
+                grid-column-start: 1;
+                grid-column-end: 5;
+              }
+            `}
+          >
+            <h1
+              className={css`
+                font-size: 4em;
+              `}
+            >
+              SKIDIP
+            </h1>
+            <p>Team data</p>
+          </div>
           {team.map(member => {
             return <LeaderBoard uid={member.uid} />;
           })}
