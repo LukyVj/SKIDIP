@@ -15,7 +15,7 @@ const team = [
 const Board = props => (
   <div
     className={css`
-      height: 45vh;
+      height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,6 +26,7 @@ const Board = props => (
         flex: 0 1 100%;
         display: flex;
         justify-content: space-between;
+        text-align: left;
       }
 
       span {
@@ -33,22 +34,25 @@ const Board = props => (
       }
     `}
   >
-    <h2>@{props.name}</h2>
-    <p>
-      Does best in{" "}
-      <b>
-        {prefersMode([props.topOneSolo, props.topOneDuo, props.topOneSquad])}
-      </b>
-    </p>
     <div
       className={css`
         width: 100%;
-        max-width: 500px;
+        max-width: 580px;
       `}
     >
-      {/* <p>
-        hoursplayed: <b>{props.hoursplayed}</b>
-      </p> */}
+      <h2
+        className={css`
+          text-align: left;
+        `}
+      >
+        @{props.name}
+      </h2>
+      <p>
+        Does best in{" "}
+        <b>
+          {prefersMode([props.topOneSolo, props.topOneDuo, props.topOneSquad])}
+        </b>
+      </p>
       <p>
         <span>wins:</span> <b>{props.wins}</b>
       </p>
@@ -141,9 +145,13 @@ class App extends Component {
           className={cx(
             css`
               display: grid;
-              grid-template-columns: repeat(2, 1fr);
+              grid-template-columns: repeat(1, 1fr);
               grid-gap: 10px;
               grid-auto-rows: minmax(100px, auto);
+
+              @media (min-width: 960px) {
+                grid-template-columns: repeat(2, 1fr);
+              }
             `
           )}
         >
