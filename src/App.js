@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { css, cx } from "emotion";
-import { timeConverter } from "./helper";
+import { timeConverter, prefersMode } from "./helper";
 import "./App.css";
 
 // const fortnite = new Client("425c6cf9-c137-4149-977f-377b7bd33f06");
@@ -34,6 +34,12 @@ const Board = props => (
     `}
   >
     <h2>@{props.name}</h2>
+    <p>
+      Does best in{" "}
+      <b>
+        {prefersMode([props.topOneSolo, props.topOneDuo, props.topOneSquad])}
+      </b>
+    </p>
     <div
       className={css`
         width: 100%;
@@ -109,6 +115,9 @@ class LeaderBoard extends Component {
         lastSolo={hit.stats.lastmodified_solo}
         lastDuo={hit.stats.lastmodified_duo}
         lastSquad={hit.stats.lastmodified_squad}
+        topOneSolo={hit.stats.placetop1_solo}
+        topOneDuo={hit.stats.placetop1_duo}
+        topOneSquad={hit.stats.placetop1_squad}
       />
     ));
   }

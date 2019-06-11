@@ -29,3 +29,52 @@ export const timeConverter = t => {
     return date + " " + month + ", " + hour + ":" + min;
   else return date + " " + month + " " + year + ", " + hour + ":" + min;
 };
+
+export const largestNum = arr => {
+  let currentLongest = arr[0];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > currentLongest) {
+      currentLongest = arr[i];
+    }
+  }
+
+  return currentLongest;
+};
+
+export const indexOfMax = arr => {
+  if (arr.length === 0) {
+    return -1;
+  }
+
+  var max = arr[0];
+  var maxIndex = 0;
+
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      maxIndex = i;
+      max = arr[i];
+    }
+  }
+
+  return maxIndex;
+};
+
+export const prefersMode = modes => {
+  let mode;
+  switch (indexOfMax(modes)) {
+    case 0:
+      mode = "Solo";
+      break;
+    case 1:
+      mode = "Duo";
+      break;
+    case 2:
+      mode = "Squad";
+      break;
+    default:
+      mode = "Solo";
+  }
+
+  return mode;
+};
