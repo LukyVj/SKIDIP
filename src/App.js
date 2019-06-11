@@ -15,7 +15,7 @@ const team = [
 const Board = props => (
   <div
     className={css`
-      height: 40vh;
+      height: 45vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,7 +33,7 @@ const Board = props => (
       }
     `}
   >
-    <h1>@{props.name}</h1>
+    <h2>@{props.name}</h2>
     <div
       className={css`
         width: 100%;
