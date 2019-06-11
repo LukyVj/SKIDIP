@@ -64,13 +64,20 @@ export const prefersMode = modes => {
   let mode;
   switch (indexOfMax(modes)) {
     case 0:
-      mode = "Solo";
+      mode = `Solo then ${
+        indexOfMax(modes.splice(0, 1)) === 1 ? "Duo" : "Squad"
+      }`;
       break;
     case 1:
-      mode = "Duo";
+      mode = `Duo then ${
+        indexOfMax(modes.splice(1, 1)) === 0 ? "Solo" : "Squad"
+      }`;
       break;
     case 2:
-      mode = "Squad";
+      console.log(indexOfMax(modes.splice(2, 1)));
+      mode = `Squad then ${
+        indexOfMax(modes.splice(2, 1)) === 0 ? "Solo" : "Duo"
+      }`;
       break;
     default:
       mode = "Solo";
