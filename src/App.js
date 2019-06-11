@@ -140,7 +140,6 @@ class App extends Component {
   render() {
     return (
       <div className={cx("App")}>
-        <h1>SKIDIP</h1>
         <div
           className={cx(
             css`
