@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { css, cx } from "emotion";
 import { timeConverter, prefersMode } from "./helper";
+import chroma from "chroma-js";
 import "./App.css";
 
 import UserLogo from "./images/user.js";
@@ -15,6 +16,17 @@ const team = [
   { uid: "0d4f175a990f44a08e0447b56ed42703" }
 ];
 
+const pick = num => {
+  if (num > 1.5) {
+    return 3;
+  } else if (num > 1) {
+    return 2;
+  } else if (num > 0.5) {
+    return 1;
+  } else if (num > 0) {
+    return 0;
+  }
+};
 const Board = props => (
   <div
     className={css`
@@ -26,7 +38,11 @@ const Board = props => (
       width: calc(100% - 4em);
       border: 1px solid;
       padding: 2em;
-
+      border-top: 10px solid
+        ${chroma
+          .scale(["#fafa6e", "#2A4858"])
+          .mode("lch")
+          .colors(6)[pick(props.kd)]};
       p {
         border-bottom: 1px dashed;
         flex: 0 1 100%;
@@ -34,6 +50,8 @@ const Board = props => (
         justify-content: space-between;
         text-align: left;
       }
+
+      test: ${pick(props.kd)};
 
       span {
         text-transform: uppercase;
@@ -136,7 +154,7 @@ class LeaderBoard extends Component {
   render() {
     console.log(this.state.data);
 
-    return this.state.data.map(hit => (
+    return this.state.data.map((hit, index) => (
       <div>
         <button
           className={
@@ -162,6 +180,7 @@ class LeaderBoard extends Component {
         </button>
         <Board
           key={hit.uid}
+          index={index}
           name={hit.username}
           wins={hit.totals.wins}
           kills={hit.totals.kills}
