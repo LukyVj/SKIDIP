@@ -248,7 +248,9 @@ class App extends Component {
             >
               SKIDIP
             </h1>
-            <p>Team data</p>
+            <p>
+              Support a creator code: <code>SKIDIP-LUKYVJ</code>
+            </p>
           </div>
           {team.map(member => {
             return <LeaderBoard uid={member.uid} />;
