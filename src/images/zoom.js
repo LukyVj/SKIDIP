@@ -6,9 +6,9 @@ export default props => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={cx("feather feather-zoom-in", props.className)}
   >
     <circle cx="11" cy="11" r="8" />
