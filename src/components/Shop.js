@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { css, cx } from "emotion";
-import { Card } from "@algolia/ui-library";
+import { css } from "emotion";
 
 const ShopCard = props => {
-  console.log(props);
   return (
     <div className="ta-center d-grid g-2">
       <img
@@ -47,18 +45,15 @@ class Shop extends Component {
   render() {
     const shop = this.state.shop.data;
     return this.state.ready === true
-      ? shop.map(
-          item =>
-            console.log("item", item) || (
-              <div className="pv-0 ph-16 bgc-white mb-8">
-                <ShopCard
-                  name={item.item.name}
-                  description={item.item.description}
-                  image={item.item.images}
-                />
-              </div>
-            )
-        )
+      ? shop.map(item => (
+          <div className="pv-0 ph-16 bgc-white mb-8">
+            <ShopCard
+              name={item.item.name}
+              description={item.item.description}
+              image={item.item.images}
+            />
+          </div>
+        ))
       : null;
   }
 }

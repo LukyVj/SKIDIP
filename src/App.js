@@ -7,6 +7,7 @@ import "./App.css";
 
 import Shop from "./components/Shop.js";
 import PlayerBoard from "./components/PlayerBoard.js";
+import CreativeList from "./components/CreativeList.js";
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +46,13 @@ class App extends Component {
           <h2 className="color-white">Shop items</h2>
           <div className="d-grid g-2">
             <Shop />
+          </div>
+        </Section>
+
+        <Section background="transparent">
+          <h2 className="color-white">Creative islands</h2>
+          <div className="d-grid g-2">
+            <CreativeList />
           </div>
         </Section>
       </div>
