@@ -22,17 +22,6 @@ b {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -44,4 +33,19 @@ b {
   to {
     transform: rotate(360deg);
   }
+}
+
+/*** Replace me
+*/
+body section.section {
+  display: none;
+}
+body[data-selected-section="team"] section#team-section {
+  display: block;
+}
+body[data-selected-section="shop"] section#shop-section {
+  display: block;
+}
+body[data-selected-section="creative"] section#creative-section {
+  display: block;
 }

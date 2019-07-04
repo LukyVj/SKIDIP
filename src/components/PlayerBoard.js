@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+/** @jsx jsx */
+import { Component } from "react";
 import { timeConverter, prefersMode } from "../scripts/helper";
-import { css, cx } from "emotion";
+import { css, jsx } from "@emotion/core";
 import { CardsRow, Card } from "@algolia/ui-library";
 import chroma from "chroma-js";
-import TwitchLogo from "../images/twitch.js";
-import ExpandIcon from "../images/zoom.js";
+
+import Icon from "./Icon.js";
 
 const styles = {
   button: {
@@ -52,7 +53,7 @@ const pick = num => {
 
 const Board = props => (
   <div
-    className={css`
+    css={css`
       height: auto;
       display: flex;
       align-items: center;
@@ -92,12 +93,12 @@ const Board = props => (
     `}
   >
     <div
-      className={css`
+      css={css`
         width: 100%;
       `}
     >
       <h2
-        className={css`
+        css={css`
           text-align: left;
         `}
       >
@@ -106,7 +107,7 @@ const Board = props => (
         </div>
 
         <small
-          className={css`
+          css={css`
             padding: 0.5em;
             background: ${chroma
               .scale(["#fafa6e", "#2A4858"])
@@ -182,37 +183,35 @@ class LeaderBoard extends Component {
 
   render() {
     return this.state.data.map((hit, index) => (
-      <div key={index} className={!this.state.expanded && "pos-relative z-max"}>
+      <div
+        key={index}
+        className={!this.state.expanded ? "pos-relative z-max" : null}
+      >
         {this.props.twitch && (
           <a
             href={`https://twitch.com/${this.props.twitch}`}
-            className={cx(
+            className="va-middle d-block p-0 bxs-default color-current"
+            css={[
               styles.button.root,
               styles.button.round,
               styles.button.purple,
-              "va-middle d-block p-0 bxs-default",
               css`
                 position: absolute;
                 top: 0;
                 left: 0;
                 margin: -3em;
               `
-            )}
+            ]}
           >
-            <TwitchLogo
-              className={css`
-                width: 24px;
-                height: 24px;
-              `}
-            />
+            <Icon name="twitch" />
           </a>
         )}
         <button
-          className={cx(
+          className="bxs-default"
+          css={[
             styles.button.root,
             styles.button.round,
             styles.button.green,
-            "bxs-default",
             this.state.expanded
               ? css`
                   position: absolute;
@@ -227,16 +226,12 @@ class LeaderBoard extends Component {
                   right: 0;
                   margin: -3em;
                 `
-          )}
+          ]}
           onClick={() => {
             this.setState({ expanded: !this.state.expanded });
           }}
         >
-          <ExpandIcon
-            className={css`
-              width: 24px;
-            `}
-          />
+          <Icon name="zoom" />
         </button>
         <Board
           key={hit.uid}

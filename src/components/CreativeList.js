@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { css } from "emotion";
+/** @jsx jsx */
+import { Component } from "react";
+import { css, jsx } from "@emotion/core";
 
 const CreativeListCard = props => {
   console.log(props);
@@ -8,7 +9,7 @@ const CreativeListCard = props => {
       <img
         alt={props.name}
         src={props.image.thumbnail.path}
-        className={css`
+        css={css`
           width: 100%;
           max-width: 200px;
           display: block;
