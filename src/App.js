@@ -1,12 +1,20 @@
 /** @jsx jsx */
 import { Component } from "react";
-import { css, jsx } from "@emotion/core";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import { css, jsx } from "@emotion/core";
 import { Section } from "@algolia/ui-library";
+
 import "./fragments.css";
 import "./App.css";
 
-import { Nav, Shop, PlayerBoard, CreativeList } from "./components/index";
+import {
+  Shop,
+  PlayerBoard,
+  CreativeList,
+  Maps,
+  SupportACreator
+} from "./components/index";
 
 class App extends Component {
   constructor(props) {
@@ -19,47 +27,82 @@ class App extends Component {
 
   componentDidMount() {}
 
+  selectItem = item => {
+    this.setState({ selected: item.toLowerCase() });
+  };
   render() {
+    const sections = ["Team", "Shop", "Creative", "Maps"];
+
     return (
-      <div className="App">
-        <h1
-          css={css`
-            font-size: 6em;
-            margin: 0.5em auto;
-            padding: 0;
-            color: #fff;
-          `}
-        >
-          SKIDIP
-        </h1>
-        <Nav />
-        <p className="color-white m-0">
-          Support a creator code: <code>SKIDIP-LUKYVJ</code>
-        </p>
+      <Router>
+        <div className="App">
+          <nav
+            css={css`
+              background: white;
+            `}
+          >
+            <div>
+              <h1
+                css={css`
+                  font-size: 6em;
+                  margin: 0.5em auto;
+                  padding: 0;
+                  color: var(--nebula);
+                `}
+              >
+                SKIDIP
+              </h1>
+            </div>
+            <ul className="lis-none p-0 m-0 ov-hidden d-block">
+              {sections.map((item, index) => (
+                <li
+                  className="d-block"
+                  css={[
+                    css`
+                      appearance: none;
+                      border: 0;
+                    `,
+                    item.toLowerCase() === this.state.selected
+                      ? css`
+                          background: var(--nebula);
+                          color: white;
+                        `
+                      : css`
+                          background: white;
+                          color: var(--nebula);
+                        `
+                  ]}
+                >
+                  <Link
+                    onClick={() => this.selectItem(item)}
+                    className="color-current td-none d-block w-100p h-100p"
+                    css={css`
+                      padding: 1em;
+                    `}
+                    to={item.toLowerCase()}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <SupportACreator
+              css={css`
+                position: absolute;
+                bottom: 0;
+              `}
+            />
+          </nav>
 
-        <Section background="transparent" className="section" id="team-section">
-          <h2 className="color-white">Team Data</h2>
-          <PlayerBoard />
-        </Section>
-
-        <Section background="transparent" className="section" id="shop-section">
-          <h2 className="color-white">Shop items</h2>
-          <div className="d-grid g-2">
-            <Shop />
-          </div>
-        </Section>
-
-        <Section
-          background="transparent"
-          className="section"
-          id="creative-section"
-        >
-          <h2 className="color-white">Creative islands</h2>
-          <div className="d-grid g-2">
-            <CreativeList />
-          </div>
-        </Section>
-      </div>
+          <Section background="transparent" className="content">
+            <Route exact path="/" component={PlayerBoard} />
+            <Route path="/team" component={PlayerBoard} />
+            <Route path="/shop" component={Shop} />
+            <Route path="/creative" component={CreativeList} />
+            <Route path="/maps" component={Maps} />
+          </Section>
+        </div>
+      </Router>
     );
   }
 }

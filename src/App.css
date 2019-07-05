@@ -11,7 +11,7 @@
 }
 body {
   background: #353c51;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 h1,
@@ -35,17 +35,20 @@ b {
   }
 }
 
-/*** Replace me
-*/
-body section.section {
-  display: none;
+.App {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
-body[data-selected-section="team"] section#team-section {
-  display: block;
+.App nav {
+  grid-area: 1 / 1 / 6 / 3;
+  height: 100vh;
+  position: sticky;
+  top: 0;
 }
-body[data-selected-section="shop"] section#shop-section {
-  display: block;
-}
-body[data-selected-section="creative"] section#creative-section {
-  display: block;
+
+.App .content {
+  grid-area: 1 / 3 / 6 / 9;
 }
