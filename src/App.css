@@ -34,18 +34,3 @@ b {
     transform: rotate(360deg);
   }
 }
-
-/*** Replace me
-*/
-body section.section {
-  display: none;
-}
-body[data-selected-section="team"] section#team-section {
-  display: block;
-}
-body[data-selected-section="shop"] section#shop-section {
-  display: block;
-}
-body[data-selected-section="creative"] section#creative-section {
-  display: block;
-}

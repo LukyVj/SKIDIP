@@ -1,13 +1,14 @@
 /** @jsx jsx */
 import { Component } from "react";
 import { css, jsx } from "@emotion/core";
+import { decodeHTML } from "../scripts/helper";
 
 const CreativeListCard = props => {
   console.log(props);
   return (
     <div className="ta-center d-grid g-2">
       <img
-        alt={props.name}
+        alt={decodeHTML(props.name)}
         src={props.image.thumbnail.path}
         css={css`
           width: 100%;
@@ -16,9 +17,9 @@ const CreativeListCard = props => {
         `}
       />
       <div>
-        <h3>{props.name}</h3>
+        <h3>{decodeHTML(props.name)}</h3>
 
-        <h4>{props.description}</h4>
+        <h4>{decodeHTML(props.description)}</h4>
 
         <span className="p-8 bgc-moon color-nebula">{props.code}</span>
       </div>

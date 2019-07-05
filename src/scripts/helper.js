@@ -1,3 +1,5 @@
+import { csvParse } from "d3-dsv";
+
 export const timeConverter = t => {
   let a = new Date(t * 1000);
   let today = new Date();
@@ -84,4 +86,17 @@ export const prefersMode = modes => {
   }
 
   return mode;
+};
+
+export const fetchCsv = url =>
+  fetch(url)
+    .then(response =>
+      response.ok ? response.text() : Promise.reject(response.status)
+    )
+    .then(text => csvParse(text));
+
+export const decodeHTML = html => {
+  let txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
 };
