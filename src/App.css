@@ -11,7 +11,7 @@
 }
 body {
   background: #353c51;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 h1,
@@ -33,4 +33,22 @@ b {
   to {
     transform: rotate(360deg);
   }
+}
+
+.App {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.App nav {
+  grid-area: 1 / 1 / 6 / 3;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.App .content {
+  grid-area: 1 / 3 / 6 / 9;
 }

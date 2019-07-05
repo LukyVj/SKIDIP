@@ -3,6 +3,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
 import { css, jsx } from "@emotion/core";
+import { Card } from "@algolia/ui-library";
 import { cx } from "emotion";
 import { fetchCsv } from "../scripts/helper";
 
@@ -34,9 +35,9 @@ class Maps extends Component {
 
   render() {
     return (
-      <>
+      <Card>
         <div
-          className="bgc-white d-flex fxd-row fxw-wrap bgc-black p-8 color-white"
+          className="bgc-white d-flex fxd-row fxw-wrap bgc-nebula p-8 color-white"
           css={styles.row}
         >
           <div css={styles.cell} className={cx(cellClasses, "fw-bold")}>
@@ -60,7 +61,7 @@ class Maps extends Component {
             <Item item={item} key={i} />
           ))}
         </div>
-      </>
+      </Card>
     );
   }
 }

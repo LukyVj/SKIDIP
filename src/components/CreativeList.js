@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { Component } from "react";
 import { css, jsx } from "@emotion/core";
+import { Card } from "@algolia/ui-library";
 import { decodeHTML } from "../scripts/helper";
 
 const CreativeListCard = props => {
@@ -54,14 +55,14 @@ class CreativeList extends Component {
       ? list.entries.map(
           item =>
             console.log("item", item) || (
-              <div className="pv-0 ph-16 bgc-white mb-8">
+              <Card>
                 <CreativeListCard
                   name={item.island.name}
                   description={item.island.description}
                   image={item.island.images}
                   code={item.island.code}
                 />
-              </div>
+              </Card>
             )
         )
       : null;

@@ -36,28 +36,31 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <h1
+          <nav
             css={css`
-              font-size: 6em;
-              margin: 0.5em auto;
-              padding: 0;
-              color: #fff;
+              background: white;
             `}
           >
-            SKIDIP
-          </h1>
-          <SupportACreator />
-
-          <nav>
-            <ul className="lis-none p-0 m-0 ov-hidden bdr-max d-block">
+            <div>
+              <h1
+                css={css`
+                  font-size: 6em;
+                  margin: 0.5em auto;
+                  padding: 0;
+                  color: var(--nebula);
+                `}
+              >
+                SKIDIP
+              </h1>
+            </div>
+            <ul className="lis-none p-0 m-0 ov-hidden d-block">
               {sections.map((item, index) => (
                 <li
-                  className="d-inline-block"
+                  className="d-block"
                   css={[
                     css`
                       appearance: none;
                       border: 0;
-                      padding: 1em;
                     `,
                     item.toLowerCase() === this.state.selected
                       ? css`
@@ -67,30 +70,15 @@ class App extends Component {
                       : css`
                           background: white;
                           color: var(--nebula);
-                        `,
-
-                    index !== sections.length - 1
-                      ? css`
-                          border-right: 1px solid #353c51;
                         `
-                      : null,
-                    index === 0
-                      ? css`
-                          border-top-left-radius: 100px;
-                          border-bottom-left-radius: 100px;
-                        `
-                      : null,
-                    index === sections.length - 1
-                      ? css`
-                          border-top-right-radius: 100px;
-                          border-bottom-right-radius: 100px;
-                        `
-                      : null
                   ]}
                 >
                   <Link
                     onClick={() => this.selectItem(item)}
-                    className="color-current td-none"
+                    className="color-current td-none d-block w-100p h-100p"
+                    css={css`
+                      padding: 1em;
+                    `}
                     to={item.toLowerCase()}
                   >
                     {item}
@@ -98,9 +86,15 @@ class App extends Component {
                 </li>
               ))}
             </ul>
+            <SupportACreator
+              css={css`
+                position: absolute;
+                bottom: 0;
+              `}
+            />
           </nav>
 
-          <Section background="transparent">
+          <Section background="transparent" className="content">
             <Route exact path="/" component={PlayerBoard} />
             <Route path="/team" component={PlayerBoard} />
             <Route path="/shop" component={Shop} />
