@@ -93,14 +93,15 @@ class App extends Component {
               `}
             />
           </nav>
-
-          <Section background="transparent" className="content">
-            <Route exact path="/" component={PlayerBoard} />
-            <Route path="/team" component={PlayerBoard} />
-            <Route path="/shop" component={Shop} />
-            <Route path="/creative" component={CreativeList} />
-            <Route path="/maps" component={Maps} />
-          </Section>
+          <div className="content">
+            <Section background="transparent" className="inner-content">
+              <Route exact path="/" component={PlayerBoard} />
+              <Route path="/team" component={PlayerBoard} />
+              <Route path="/shop" component={Shop} />
+              <Route path="/creative" component={CreativeList} />
+              <Route path="/maps" component={Maps} />
+            </Section>
+          </div>
         </div>
       </Router>
     );

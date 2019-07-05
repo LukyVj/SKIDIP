@@ -47,8 +47,21 @@ b {
   height: 100vh;
   position: sticky;
   top: 0;
+  background: url(./images/jonesy.png) no-repeat left 16px bottom / 100px,
+    #fff linear-gradient(to top, #fff, rgba(255, 255, 255, 0));
 }
 
 .App .content {
   grid-area: 1 / 3 / 6 / 9;
+  background: linear-gradient(to top, #353c51, rgba(255, 255, 255, 0)),
+    url(./images/background.jpg) no-repeat center center / cover;
+  position: relative;
+  height: 100%;
+}
+
+.App .content .content-inner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: scroll;
 }

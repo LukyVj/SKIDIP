@@ -2,7 +2,7 @@
 import { css, jsx } from "@emotion/core";
 
 const Icon = props => {
-  const ImportedIcon = require(`../images/${props.name}`).default;
+  const ImportedIcon = require(`../images/svg/${props.name}`).default;
   return (
     <ImportedIcon
       css={css`
