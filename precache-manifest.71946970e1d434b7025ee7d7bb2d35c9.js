@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0be1ef241efefa3d3739a058fe23588d",
+    "revision": "21ff6ecf140fc75d78b1c6a939b66a02",
     "url": "/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.7fd58f17.chunk.css"
   },
   {
-    "revision": "c36dc75e0e4d34c5a9bf",
-    "url": "/static/css/main.3a9b5bda.chunk.css"
+    "revision": "170fcdf09a9f2fc1b64a",
+    "url": "/static/css/main.bc647d86.chunk.css"
   },
   {
     "revision": "15aa827797806c561fe8",
     "url": "/static/js/2.ef6ffb6d.chunk.js"
   },
   {
-    "revision": "c36dc75e0e4d34c5a9bf",
-    "url": "/static/js/main.a36fcb07.chunk.js"
+    "revision": "170fcdf09a9f2fc1b64a",
+    "url": "/static/js/main.1c7428ab.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4be1ecedb14bd3e338d1aa3640c78193",
     "url": "/static/media/athletic-fields.4be1eced.svg"
+  },
+  {
+    "revision": "9b83508eea7935229be2a927ec954f34",
+    "url": "/static/media/background.9b83508e.jpg"
   },
   {
     "revision": "de664302317060229f4c7d77aa3855ac",
@@ -66,6 +70,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "3ec365951ae199ed645ba06c91462ebe",
     "url": "/static/media/intersections.3ec36595.svg"
+  },
+  {
+    "revision": "f1fe2028563408260ad2d2965600abaf",
+    "url": "/static/media/jonesy.f1fe2028.png"
   },
   {
     "revision": "65a2e9c58691eb3e859965f46a616be1",
