@@ -35,7 +35,7 @@ class Shop extends Component {
 
   componentWillMount() {
     let shopApi =
-      "https://fortnite-api.theapinetwork.com/store/get?authorization=fb36a5e4c77bcaa2a0e5e5f1bd8bbb11";
+      "https://fortnite-api.theapinetwork.com/store/get?authorization=fb36a5e4c77bcaa2a0e5e5f1bd8bbb11&cache={lastupdate}";
     fetch(shopApi)
       .then(response => response.json())
       .then(data => {
