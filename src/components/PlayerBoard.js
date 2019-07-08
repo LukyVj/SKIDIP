@@ -133,10 +133,35 @@ const Board = props => (
         <span>kills:</span> <br />
         <b>{props.kills}</b>
       </p>
-      <p>
-        <span>k/d:</span> <br />
-        <b>{props.kd}</b>
-      </p>
+
+      <div>
+        {props.kd.map((type, index) => {
+          let t;
+          switch (index) {
+            case 0:
+              t = "Total";
+              break;
+            case 1:
+              t = "Solo";
+              break;
+            case 2:
+              t = "Duo";
+              break;
+            case 3:
+              t = "Squad";
+              break;
+            default:
+              return null;
+          }
+
+          return (
+            <p>
+              {t} K/d: <b>{type}</b>
+            </p>
+          );
+        })}
+      </div>
+
       <p>
         <span>matchesplayed:</span> <br />
         <b>{props.matchesplayed}</b>
@@ -239,7 +264,12 @@ class LeaderBoard extends Component {
           name={hit.username}
           wins={hit.totals.wins}
           kills={hit.totals.kills}
-          kd={hit.totals.kd}
+          kd={[
+            hit.totals.kd,
+            hit.stats.kd_solo,
+            hit.stats.kd_duo,
+            hit.stats.kd_squad
+          ]}
           matchesplayed={hit.totals.matchesplayed}
           winrate={hit.totals.winrate}
           hoursplayed={hit.totals.hoursplayed}
