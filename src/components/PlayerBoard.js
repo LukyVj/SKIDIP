@@ -2,7 +2,6 @@
 import { Component } from "react";
 import { timeConverter, prefersMode } from "../scripts/helper";
 import { css, jsx } from "@emotion/core";
-import { CardsRow, Card } from "@algolia/ui-library";
 import chroma from "chroma-js";
 
 import Icon from "./Icon.js";
@@ -290,18 +289,18 @@ class LeaderBoard extends Component {
 }
 const loop = () =>
   team.map((member, index) => (
-    <Card key={index}>
+    <div key={index}>
       <LeaderBoard uid={member.uid} twitch={member.twitch} />
-    </Card>
+    </div>
   ));
 const PlayerBoard = () => (
-  <CardsRow
+  <div
     css={css`
       width: 100%;
     `}
   >
     {loop()}
-  </CardsRow>
+  </div>
 );
 
 export default PlayerBoard;

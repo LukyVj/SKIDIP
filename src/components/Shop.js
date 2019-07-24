@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { css } from "emotion";
-import { Card } from "@algolia/ui-library";
 
 const ShopCard = props => {
   return (
@@ -47,13 +46,13 @@ class Shop extends Component {
     const shop = this.state.shop.data;
     return this.state.ready === true
       ? shop.map(item => (
-          <Card>
+          <div>
             <ShopCard
               name={item.item.name}
               description={item.item.description}
               image={item.item.images}
             />
-          </Card>
+          </div>
         ))
       : null;
   }

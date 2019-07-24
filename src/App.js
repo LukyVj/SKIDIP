@@ -3,7 +3,6 @@ import { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { css, jsx } from "@emotion/core";
-import { Section } from "@algolia/ui-library";
 
 import "./fragments.css";
 import "./App.css";
@@ -94,13 +93,16 @@ class App extends Component {
             />
           </nav>
           <div className="content">
-            <Section background="transparent" className="inner-content">
+            <div
+              style={{ background: "transparent" }}
+              className="inner-content"
+            >
               <Route exact path="/" component={PlayerBoard} />
               <Route path="/team" component={PlayerBoard} />
               <Route path="/shop" component={Shop} />
               <Route path="/creative" component={CreativeList} />
               <Route path="/maps" component={Maps} />
-            </Section>
+            </div>
           </div>
         </div>
       </Router>
